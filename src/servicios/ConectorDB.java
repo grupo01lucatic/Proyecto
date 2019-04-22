@@ -7,7 +7,7 @@ public class ConectorDB {
 	Connection con = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
-	String driverUrl = "jdbc:mysql://localhost:3306/sakila";
+	String driverUrl = "jdbc:mysql://localhost:3306/restaurante";
 	String user = "root";
 	String password = "root";
 
