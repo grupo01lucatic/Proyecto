@@ -1,15 +1,19 @@
 package servicios;
 
-import java.sql.*;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;;
 
 public class ConectorDB {
 	// Conecta con la base de datos y lista la tabla platos.
 	Connection con = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
-	String driverUrl = "jdbc:mysql://localhost:3306/restaurante";
-	String user = "root";
-	String password = "root";
+	String driverUrl = "jdbc:mysql://10.90.36.104:3306/restaurante";
+	String user = "grupo02";
+	String password = "grupo";
 
 	public void conectorDB() {
 		try {
@@ -24,7 +28,11 @@ public class ConectorDB {
 				System.out.print(": ");
 				System.out.print(rs.getInt(3)+" calorías");
 				System.out.print(": ");
-				System.out.println(rs.getInt(4)+" cucharas");
+				if(rs.getInt(4) == 1) {
+					System.out.println("Es de cuchara");
+				}else {
+					System.out.println("No es de cuchara");
+				}
 			}
 
 			try {
