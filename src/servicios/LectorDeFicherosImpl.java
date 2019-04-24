@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import model.Pelicula;
+
 public class LectorDeFicherosImpl implements LectorDeFicheros {
 	/*
 	 * Lee el fichero de películas y manda el texto al método almacenarPalabras.
@@ -50,6 +52,12 @@ public class LectorDeFicherosImpl implements LectorDeFicheros {
 		System.out.print(" : ");
 		System.out.println(categoria);
 
+	}
+
+	@Override
+	public void almacenarPalabras(Pelicula[] peliculas) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
