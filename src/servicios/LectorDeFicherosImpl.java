@@ -13,18 +13,22 @@ public class LectorDeFicherosImpl implements LectorDeFicheros {
 	 * Lee el fichero de películas y manda el texto al método almacenarPalabras.
 	 */
 	@Override
-	public void leerFicheros() {
+	public Pelicula[] leerFicheros() {
 		// TODO Auto-generated method stub
-		File file = new File("peliculas_cat.txt");
+		File file = new File("peliculas_numCat.txt");
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader bf = new BufferedReader(fr);
 			try {
+				int contador = 0;
+				String[] arrayTexto = new String[81];
 				while (bf.readLine() != null) {
 					if (bf.readLine() != null) {
 						String texto = bf.readLine();
-						almacenarPalabras(texto);
+						arrayTexto[contador] = texto;
+						contador++;
 					}
+					return almacenarPalabras(arrayTexto);
 				}
 				fr.close();
 			} catch (IOException e) {
@@ -35,22 +39,27 @@ public class LectorDeFicherosImpl implements LectorDeFicheros {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 
 	}
 
 	// Método que recibe el texto y almacena sus atributos.
 	@Override
-	public void almacenarPalabras(String texto) {
+	public Pelicula[] almacenarPalabras(String[] texto) {
 		// TODO Auto-generated method stub
-		String[] palabras = texto.split(",");
-		String pelicula = palabras[0];
-		int ano = Integer.parseInt(palabras[1]);
-		String categoria = palabras[2];
-		System.out.print(pelicula);
-		System.out.print(" : ");
-		System.out.print(ano);
-		System.out.print(" : ");
-		System.out.println(categoria);
+		Pelicula[] peliculaArray = new Pelicula[81];
+		for (int i = 0; i < texto.length; i++) {
+			String[] palabras = texto[i].split(",");
+			String pelicula = palabras[0];
+			int ano = Integer.parseInt(palabras[1]);
+			int categoria = Integer.parseInt(palabras[2]);
+			peliculaArray[i].setId_pelicula(i);
+			peliculaArray[i].setNombre(pelicula);
+			peliculaArray[i].setAnio(ano);
+			peliculaArray[i].setId_categoria(categoria);
+			return peliculaArray;
+		}
+		return null;
 
 	}
 

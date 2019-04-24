@@ -1,14 +1,17 @@
 package control;
 
-import servicios.ConectorDB;
+
+import java.io.IOException;
+import datos.GestionPeliculas;
+
+
 
 public class Main {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		// Inicia la conexión con la DB.
-		new ConectorDB().conectar();
 	
+	public static void main(String[] args) throws IOException {
+		
 	}
-
+	
 }
+
+
