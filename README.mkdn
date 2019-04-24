@@ -1,0 +1,16 @@
+[Movieflix]
+====================================
+
+
+Bienvenidos a Movieflix
+===================
+
+Movieflix es una platafoma donde podrás ver todas tus peliculas favoritas.
+
+***
+
+Movieflix es un sistema de video in Streaming, dispondrá de catálogos de peliculas. Cada categoria o catálogo constituye un lote de peliculas.
+Dentro de nuestro sistema se gestionan las categorias, gestion de usuarios a parte de incluir nuevas peliculas. Las listas de peliculas estan filtradas por categorias, se enseñan también las peliculas mas vistas y a cada
+usuario se le listan las peliculas que no ha visto todavía y aquellas peliculas que sean más valoradas
+
+
