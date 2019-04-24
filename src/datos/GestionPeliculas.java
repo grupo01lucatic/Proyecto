@@ -1,5 +1,6 @@
 package datos;
 
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -20,12 +21,14 @@ public class GestionPeliculas implements IGestionPeliculas {
 	Statement stm = null;
 	ResultSet rs = null;
 	
-	// Este método se encarga de modificar las películas.
+
+	// Este mÃ©todo se encarga de modificar las pelÃ­culas.
 	@Override
 	public void modificarPeliculas() {
 		// TODO Auto-generated method stub
 
 	}
+
 	
 	public void insertarPeliculas() throws IOException {
 		con = conexion.conectar();
@@ -78,5 +81,6 @@ public class GestionPeliculas implements IGestionPeliculas {
 		
 		
 	}
+
 
 }
