@@ -1,0 +1,15 @@
+package gui;
+
+public class ImprimirMenu {
+	public static void imprimirMenu() {
+		System.out.println("  ");
+		System.out.println(" --MovieFlix-- ");
+		System.out.println("  ");
+		System.out.println(" ****************************** ");
+		System.out.println("  ");
+		System.out.println("**Por favor, escoje una opción**");
+		System.out.println("*1.  Modificar película  *");
+		System.out.println("  ");
+		System.out.println(" ****************************** ");
+	}
+}
