@@ -8,7 +8,6 @@ public class ObtenerPeliculas implements IObtenerPeliculas {
 
 	// Este metodo se encarga de insertar peliculas en la base de datos movieflix.
 	public void insertarPeliculas() {
-		
-		
+
 	}
 }
