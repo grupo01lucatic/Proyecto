@@ -1,9 +1,11 @@
 package servicios;
 
+import model.Pelicula;
+
 public interface LectorDeFicheros {
 
-	public void leerFicheros();
+	public Pelicula[] leerFicheros();
 
-	public void almacenarPalabras(String texto);
+	public Pelicula[] almacenarPalabras(String[] texto);
 
 }

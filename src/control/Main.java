@@ -8,6 +8,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		// Inicia la conexión con la DB.
 		new ConectorDB().conectorDB();
+		
 	}
 
 }
