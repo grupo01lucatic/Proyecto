@@ -3,7 +3,7 @@ package control;
 import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
-public class IniciarMenu {
+public class Menu {
 	public static void iniciarMenu() {
 		boolean continuar = true;
 		do {
