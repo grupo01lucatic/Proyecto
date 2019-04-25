@@ -8,8 +8,9 @@ public class ImprimirMenu {
 		System.out.println(" ****************************** ");
 		System.out.println("  ");
 		System.out.println("**Por favor, escoje una opción**");
+		System.out.println("*0.  Salir del menú   *");
 		System.out.println("*1.  Modificar película  *");
-		System.out.println("  ");
+		System.out.println("*2.  Eliminar película   *");
 		System.out.println(" ****************************** ");
 	}
 }

@@ -16,5 +16,25 @@ public class PedirDatos {
 			System.out.println("Ha ocurrido un error");
 			return -1;
 		}
+		
+		
+	}
+	
+	public static String pedirDato(String mensaje) throws MovieflixException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println(mensaje);
+		String s;
+
+		try {
+			s = (br.readLine());
+			return s;
+		}  
+		
+		 catch (IOException e) {
+			System.out.println("Error: entrada invalida");
+			return null;
+		}
+		
+		
 	}
 }
