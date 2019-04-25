@@ -6,8 +6,8 @@ import excepciones.MovieflixException;
 
 public class Main {
 
-	public static void main(String[] args) throws MovieflixException {
-
+	public static void main(String[] args) throws MovieflixException, IOException {
+		Menu.iniciarMenu();
 	}
 
 }
