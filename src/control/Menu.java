@@ -3,6 +3,7 @@ package control;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import datos.GestionListadoUsuarios;
 import datos.GestionPeliculas;
 import datos.GestionUsuarios;
 import excepciones.MovieflixException;
@@ -36,6 +37,9 @@ public class Menu {
 			break;
 		case 3:
 			new GestionUsuarios().AltaUsuarios();
+			break;
+		case 4:
+			new GestionListadoUsuarios().mostrarListaUsuarios();
 			break;
 		case 0:
 			continuar = false;
