@@ -19,5 +19,25 @@ public class PedirDatos {
 		} catch (IOException e) {
 			return -1;
 		}
+		
+		
+	}
+	
+	public static String pedirDato(String mensaje) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println(mensaje);
+		String s;
+
+		try {
+			s = (br.readLine());
+			return s;
+		}  
+		
+		 catch (IOException e) {
+			System.out.println("Error: entrada invalida");
+			return null;
+		}
+		
+		
 	}
 }
