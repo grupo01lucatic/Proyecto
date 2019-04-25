@@ -8,6 +8,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
+import excepciones.MovieflixException;
 import utilidades.PedirDatos;
 
 public class Test {
@@ -45,7 +46,7 @@ public class Test {
 	// --------
 
 	@org.junit.Test
-	public void sumaPositivoNegativo() {
+	public void sumaPositivoNegativo() throws MovieflixException {
 		logger.info("Comprobando si es nulo.");
 		assertTrue(PedirDatos.pedirDatoEntero("Prueba") == -1);
 	}
