@@ -103,7 +103,7 @@ public class GestionPeliculas implements IGestionPeliculas {
 	 */
 
 	@SuppressWarnings("unused")
-	public void eliminarPelicula() throws SQLException, MovieflixException {
+	public void eliminarPelicula() throws MovieflixException {
 		try {
 
 			con = conexion.conectar();
