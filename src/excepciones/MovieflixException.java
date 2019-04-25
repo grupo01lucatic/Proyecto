@@ -24,6 +24,16 @@ public class MovieflixException extends Exception {
 		super(mensaje);
 		setLevel(tipo);
 	}
+	public static int manejoErrorNumberFormat(String br) {
+		int num=-1;
+		try {
+			num = Integer.parseInt(br);
+			return num;
+		} catch (NumberFormatException e) {
+			System.out.println("Error: entrada invalida");
+			return num;
+		}
+	}
 
 	public void setLevel(int tipo) {
 		switch(tipo) {
