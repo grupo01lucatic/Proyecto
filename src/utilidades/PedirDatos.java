@@ -20,7 +20,7 @@ public class PedirDatos {
 		
 	}
 	
-	public static String pedirDato(String mensaje) {
+	public static String pedirDato(String mensaje) throws MovieflixException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println(mensaje);
 		String s;

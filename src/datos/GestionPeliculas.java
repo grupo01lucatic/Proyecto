@@ -9,8 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-
+import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
 
@@ -24,7 +23,7 @@ public class GestionPeliculas implements IGestionPeliculas {
 
 	/* Este método se encarga de modificar las películas. */
 	@Override
-	public void modificarPeliculas() {
+	public void modificarPeliculas() throws MovieflixException {
 		try {
 	    	 String query = " UPDATE peliculas SET titulo = ?, anio = ?, id_categoria = ? WHERE id_pelicula = ?";
 	    	 con = conexion.conectar();
@@ -100,7 +99,7 @@ public class GestionPeliculas implements IGestionPeliculas {
 
 	
 	@SuppressWarnings("unused")
-	public void eliminarPelicula() throws SQLException {
+	public void eliminarPelicula() throws SQLException, MovieflixException {
 		try {
 
 			con = conexion.conectar();
