@@ -1,10 +1,13 @@
 package control;
 
+import java.io.IOException;
+
+import excepciones.MovieflixException;
 import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
-public class IniciarMenu {
-	public static void iniciarMenu() {
+public class Menu {
+	public static void iniciarMenu() throws MovieflixException, IOException {
 		boolean continuar = true;
 		do {
 			ImprimirMenu.imprimirMenu();
@@ -14,7 +17,7 @@ public class IniciarMenu {
 		System.out.println(" --- Sesión cerrada --- ");
 	}
 
-	public static boolean seleccionarOpcion() {
+	public static boolean seleccionarOpcion() throws MovieflixException, IOException {
 		boolean continuar = true;
 
 		switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {

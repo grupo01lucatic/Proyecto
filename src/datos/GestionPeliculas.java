@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
+
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
 
@@ -23,9 +25,32 @@ public class GestionPeliculas implements IGestionPeliculas {
 	/* Este método se encarga de modificar las películas. */
 	@Override
 	public void modificarPeliculas() {
-		// TODO Auto-generated method stub
+		try {
+	    	 String query = " UPDATE peliculas SET titulo = ?, anio = ?, id_categoria = ? WHERE id_pelicula = ?";
+	    	 con = conexion.conectar();
+	    	 PreparedStatement preparedStmt = con.prepareStatement(query);
+	    	 preparedStmt.setInt (4, PedirDatos.pedirDatoEntero("Introduce la id de la pelicula que deseas actualizar"));
+	         preparedStmt.setInt (3, PedirDatos.pedirDatoEntero("Introduce la categoria de la pelicula"));
+	         preparedStmt.setInt (2, PedirDatos.pedirDatoEntero("Introduce el año de la pelicula"));
+	         preparedStmt.setString (1, PedirDatos.pedirDato("Introduce el titulo de la pelicula"));
+	         preparedStmt.execute();
+	         System.out.println("Los datos se han actualizado correctamente");
+	     } catch (SQLException e) {
+				e.printStackTrace();
 
-	}
+			} finally {
+				try {
+
+					if (con != null) {
+						con.close();
+					}
+				}
+				catch (Exception e2){
+						e2.printStackTrace();
+					}
+
+			}
+} 
 
 	public void insertarPeliculas() throws IOException {
 		con = conexion.conectar();
