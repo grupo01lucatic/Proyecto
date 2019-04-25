@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import servicios.ConectorDB;
+import utilidades.PedirDatos;
 
 public class GestionPeliculas implements IGestionPeliculas {
 
@@ -72,4 +73,45 @@ public class GestionPeliculas implements IGestionPeliculas {
 
 	}
 
+	
+	@SuppressWarnings("unused")
+	public void eliminarPelicula() throws SQLException {
+		try {
+
+			con = conexion.conectar();
+			String query = " DELETE FROM peliculas WHERE id_pelicula = ?";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			int id_pelicula = PedirDatos.pedirDatoEntero("Introduce el id de la pelicula que quieres eliminar");
+			preparedStmt.setInt(1, id_pelicula);
+			int filasBorradas = preparedStmt.executeUpdate();
+			if (filasBorradas > 0) {
+			    System.out.println("Los campos se han eliminado correctamente");
+			}
+			else {
+				System.out.println("No se han encontrado coincidencias");
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void eliminarPeliculas() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
