@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import datos.GestionPeliculas;
+import datos.GestionUsuarios;
 import excepciones.MovieflixException;
 import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
+/*Menú de la aplicación*/
 public class Menu {
 	public static void iniciarMenu() throws MovieflixException, IOException, SQLException {
 		boolean continuar = true;
@@ -31,6 +33,9 @@ public class Menu {
 			break;
 		case 2:
 			new GestionPeliculas().eliminarPelicula();
+			break;
+		case 3:
+			new GestionUsuarios().AltaUsuarios();
 			break;
 		case 0:
 			continuar = false;
