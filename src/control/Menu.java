@@ -11,7 +11,7 @@ import utilidades.PedirDatos;
 
 /*Menú de la aplicación*/
 public class Menu {
-	public static void iniciarMenu() throws MovieflixException, IOException, SQLException {
+	public static void iniciarMenu() throws MovieflixException {
 		boolean continuar = true;
 		do {
 			ImprimirMenu.imprimirMenu();
@@ -21,7 +21,7 @@ public class Menu {
 		System.out.println(" --- Sesión cerrada --- ");
 	}
 
-	public static boolean seleccionarOpcion() throws MovieflixException, IOException, SQLException {
+	public static boolean seleccionarOpcion() throws MovieflixException {
 		boolean continuar = true;
 
 		switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {
