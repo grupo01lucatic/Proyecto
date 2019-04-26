@@ -36,9 +36,12 @@ public class Menu {
 			new GestionPeliculas().eliminarPelicula();
 			break;
 		case 3:
+			new GestionUsuarios().modificarUsuario();
+      break;
+		case 4:
 			new GestionUsuarios().AltaUsuarios();
 			break;
-		case 4:
+		case 5:
 			new GestionListadoUsuarios().mostrarListaUsuarios();
 			break;
 		case 0:

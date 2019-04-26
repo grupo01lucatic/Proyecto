@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
@@ -18,7 +17,7 @@ public class GestionUsuarios implements IGestionUsuarios {
 	ResultSet rs = null;
 
 	@Override
-	/* MÈtodo para dar de alta usuarios */
+	/* M√©todo para dar de alta usuarios */
 	public void altaUsuario() {
 		try {
 			String query = "INSERT INTO usuarios (username, email, password) values (?,?,?)";
@@ -34,9 +33,9 @@ public class GestionUsuarios implements IGestionUsuarios {
 
 			int insertada = preparedStmt.executeUpdate();
 			if (insertada > 0) {
-				System.out.println("Se ha aÒadido el registro correctamente");
+				System.out.println("Se ha a√±adido el registro correctamente");
 			} else {
-				System.out.println("No se ha podido aÒadir el nuevo Usuario");
+				System.out.println("No se ha podido a√±adir el nuevo Usuario");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,7 +53,7 @@ public class GestionUsuarios implements IGestionUsuarios {
 		}
 
 	}
-	/* MÈtodo para eliminar usuario introduciendo la id del usuario */
+	/* M√©todo para eliminar usuario introduciendo la id del usuario */
 	public void eliminarUsuario() {
 		try {
 
@@ -81,7 +80,6 @@ public class GestionUsuarios implements IGestionUsuarios {
 
 		} finally {
 			try {
-
 				if (con != null) {
 					con.close();
 				}
@@ -91,4 +89,37 @@ public class GestionUsuarios implements IGestionUsuarios {
 		}
 	}
 
+	/** Este m√©todo se encarga de modificar el usuario */
+	@Override
+	public void modificarUsuario() {
+		try {
+			String query = " UPDATE usuarios SET username = ?, email = ?, password = ? WHERE id_user = ?";
+			con = conexion.conectar();
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			try {
+				preparedStmt.setString(4, PedirDatos.pedirDato("Introduce la id del usuario que deseas actualizar"));
+				preparedStmt.setString(3, PedirDatos.pedirDato("Introduce la contrase√±a"));
+				preparedStmt.setString(2, PedirDatos.pedirDato("Introduce el email"));
+				preparedStmt.setString(1, PedirDatos.pedirDato("Introduce el nombre de usuario nuevo"));
+				preparedStmt.execute();
+				System.out.println("Los datos se han actualizado correctamente");
+			} catch (MovieflixException e) {
+				e.printStackTrace();
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
+		}
+	}
 }
