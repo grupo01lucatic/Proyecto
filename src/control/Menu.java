@@ -12,7 +12,8 @@ import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
 /**
- * Menu de la aplicacion*/
+ * Menu de la aplicacion
+ */
 public class Menu {
 	/**
 	 * 
@@ -22,7 +23,7 @@ public class Menu {
 		do {
 			ImprimirMenu.imprimirMenu();
 			continuar = seleccionarOpcion();
-			
+
 		} while (continuar);
 		System.out.println(" --- Sesion cerrada --- ");
 	}
@@ -33,48 +34,50 @@ public class Menu {
 	public static boolean seleccionarOpcion() {
 		boolean continuar = true;
 		try {
-			
-		
-		switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {
-		case -1:
-			System.out.println("Introduce opcion valida");
-			break;
-		case 1:
-			new GestionPeliculas().modificarPeliculas();
-			break;
-		case 2:
-			new GestionPeliculas().eliminarPelicula();
-			break;
-		case 3:
-			new GestionUsuarios().modificarUsuario();
-			break;
-		case 4:
-			new GestionUsuarios().altaUsuario();
-			break;
-		case 5:
-			new GestionListadoUsuarios().mostrarListaUsuarios();
-			break;
-		case 6:
-			new GestionListadoPeliculas().listarPeliculas();
-			break;
-		case 7:
-			new GestionListadoUsuarios().listarPeliculasVer();
-			break;
-		case 9:
-			new GestionListadoPeliculas().listarPeliculasCategorias();
-			break;
-		case 10:
-			new GestionListadoPeliculas().listarPeliculasMasVistas();
-			break;
-		case 11:
-			new GestionListadoPeliculas().listarPeliculasMejorValoradas();
-			break;
-		case 0:
-			continuar = false;
-			break;
-		}
-		return continuar;
-		}catch(MovieflixException e) {
+
+			switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {
+			case -1:
+				System.out.println("Introduce opcion valida");
+				break;
+			case 1:
+				new GestionPeliculas().modificarPeliculas();
+				break;
+			case 2:
+				new GestionPeliculas().eliminarPelicula();
+				break;
+			case 3:
+				new GestionUsuarios().modificarUsuario();
+				break;
+			case 4:
+				new GestionUsuarios().altaUsuarios();
+				break;
+			case 5:
+				new GestionListadoUsuarios().mostrarListaUsuarios();
+				break;
+			case 6:
+				new GestionListadoPeliculas().listarPeliculas();
+				break;
+			case 7:
+				new GestionListadoUsuarios().listarPeliculasVer();
+				break;
+			case 8:
+				new GestionListadoUsuarios().guardarListaUsuarios();
+				break;
+			case 9:
+				new GestionListadoPeliculas().listarPeliculasCategorias();
+				break;
+			case 10:
+				new GestionListadoPeliculas().listarPeliculasMasVistas();
+				break;
+			case 11:
+				new GestionListadoPeliculas().listarPeliculasMejorValoradas();
+				break;
+			case 0:
+				continuar = false;
+				break;
+			}
+			return continuar;
+		} catch (MovieflixException e) {
 			System.out.print(e);
 			iniciarMenu();
 		}

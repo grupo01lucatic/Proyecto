@@ -26,7 +26,7 @@ public class GestionUsuarios implements IGestionUsuarios {
 
 	@Override
 	/* MÃ©todo para dar de alta usuarios */
-	public void altaUsuario() {
+	public void altaUsuarios() {
 		try {
 			String query = "INSERT INTO usuarios (username, email, password) values (?,?,?)";
 			con = conexion.conectar();
