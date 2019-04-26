@@ -1,7 +1,8 @@
 package control;
 
 import java.sql.SQLException;
-import datos.GestionPeliculas;
+
+import datos.GestionUsuarios;
 import excepciones.MovieflixException;
 
 public class Main {
