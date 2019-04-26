@@ -61,4 +61,46 @@ public class GestionListadoUsuarios implements IGestionListadoUsuarios {
 
 	}
 
+	/**
+	 * Este metodo muestra las peliculas que puede ver el usuario
+	 */
+	@Override
+	public void listarPeliculasVer() {
+		// TODO Auto-generated method stub
+		try {
+			String query = "select p.titulo, p.anio, c.nombre_categoria from peliculas p left join categorias c on p.id_categoria = c.id_categoria order by nombre_categoria;  ";
+			con = conexion.conectar();
+			logger.info("Conexion creada");
+			pst = con.prepareStatement(query);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				System.out.println("");
+				System.out.print(rs.getString(1));
+				System.out.print(": ");
+				System.out.print(rs.getInt(2));
+				System.out.print(": ");
+				System.out.print(rs.getString(3));
+			}
+
+		} catch (SQLException e) {
+			logger.error("Ha ocurrido un error");
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pst != null) {
+					pst.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception e) {
+				logger.error("Algo a salido mal");
+			}
+		}
+		
+	}
+
+
 }
