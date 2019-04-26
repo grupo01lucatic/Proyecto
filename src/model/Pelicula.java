@@ -1,10 +1,7 @@
 package model;
 
 /**
- * 
- * @author grupo01
- * @param Clase Película que contiene los campos que aparecen en la BD de la
- *              tabla películas
+ * Película que contiene los campos que aparecen en la BD de la tabla películas
  *
  */
 public class Pelicula {

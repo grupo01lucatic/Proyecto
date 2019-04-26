@@ -2,11 +2,11 @@ package datos;
 
 /**
  * 
- * @author grupo01 Interface de la gestión de usuarios
+ * @author grupo01 Interfaz de la gestión de usuarios
  *
  */
 public interface IGestionUsuarios {
-	public void altaUsuario();
+	public void altaUsuarios();
 
 	public void modificarUsuario();
 }

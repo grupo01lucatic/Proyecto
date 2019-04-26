@@ -1,14 +1,13 @@
 package model;
 
 import java.io.Serializable;
+
 /**
- * 
- * @author grupo01
- * @param Clase usuario que tiene como parámetros los campos que tiene la tabla
- *              usuarios de la BD
+ * Clase usuario que tiene como parametros los campos que tiene la tabla
+ * usuarios de la BD
  *
  */
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 	private String username, mail;
 
 	public Usuario() {

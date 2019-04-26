@@ -9,8 +9,7 @@ import excepciones.MovieflixException;
 
 /**
  * 
- * @author grupo01
- * @param Clase que se ocupa de pedir datos tanto enteros como string
+ * Clase que se ocupa de pedir datos tanto enteros como string
  *
  */
 public class PedirDatos {
@@ -18,7 +17,6 @@ public class PedirDatos {
 
 	/**
 	 * 
-	 * @param mensaje
 	 * @return entero
 	 * @throws MovieflixException Método que recibe un string como parámetro, pide
 	 *                            un entero, comprueba que sea un valor válido y lo
@@ -37,13 +35,10 @@ public class PedirDatos {
 
 	/**
 	 * 
-	 * @param mensaje
 	 * @return string
-	 * @throws MovieflixException
-	 *                            <p>
-	 *                            Método que recibe un string como parámetro, pide
+	 * @throws MovieflixException Método que recibe un string como parámetro, pide
 	 *                            un string y lo devuelve
-	 *                            </p>
+	 * 
 	 */
 	public static String pedirDato(String mensaje) throws MovieflixException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

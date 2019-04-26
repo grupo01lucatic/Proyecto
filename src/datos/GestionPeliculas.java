@@ -13,6 +13,10 @@ import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
 
+/**
+ * Clase encargada de la gestion de peliculas
+ *
+ */
 public class GestionPeliculas implements IGestionPeliculas {
 
 	/*
@@ -29,7 +33,7 @@ public class GestionPeliculas implements IGestionPeliculas {
 	static Connection con = null;
 	PreparedStatement stmt = null;
 
-	/** Este mÃ©todo se encarga de modificar las pelÃ­culas. */
+	/** Este método se encarga de modificar las películas. */
 	@Override
 	public void modificarPeliculas() throws MovieflixException {
 		try {
@@ -48,8 +52,11 @@ public class GestionPeliculas implements IGestionPeliculas {
 		}
 	}
 
-
-	/** Metodo que lee el fichero linea a linea y lo inserta en la base de datos */
+	/**
+	 * Metodo que lee el fichero linea a linea y lo inserta en la base de datos
+	 *
+	 * @throws IOException
+	 */
 
 	public void insertarPeliculas() throws IOException {
 		con = conexion.conectar();
@@ -113,7 +120,8 @@ public class GestionPeliculas implements IGestionPeliculas {
 			ConectorDB.desconexion();
 		}
 	}
-	/** Metodo para incluir una nueva pelicula en el catalogo*/
+
+	/** Metodo para incluir una nueva pelicula en el catalogo */
 	public void peliculaNueva() {
 		try {
 			String query = "INSERT INTO peliculas (titulo, anio, id_categoria) values (?,?,?)";
@@ -122,7 +130,8 @@ public class GestionPeliculas implements IGestionPeliculas {
 			try {
 				stmt.setString(1, PedirDatos.pedirDato("Introduce el titulo de la pelicula nueva"));
 				stmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el aï¿½o"));
-				stmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce el numero de la categoria.\n 1.policiaca 2.romantica 3.aventuras 4.comedia 5.animacion 6.thriller"));
+				stmt.setInt(3, PedirDatos.pedirDatoEntero(
+						"Introduce el numero de la categoria.\n 1.policiaca 2.romantica 3.aventuras 4.comedia 5.animacion 6.thriller"));
 			} catch (MovieflixException e) {
 				e.printStackTrace();
 			}

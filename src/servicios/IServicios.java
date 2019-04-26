@@ -2,8 +2,7 @@ package servicios;
 
 /**
  * 
- * @author grupo01
- * @param inteface de servicios
+ * @author grupo01 Inteface de servicios
  *
  */
 public interface IServicios {
