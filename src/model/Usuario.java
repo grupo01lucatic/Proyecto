@@ -1,25 +1,24 @@
 package model;
 
+import java.io.Serializable;
 /**
  * 
  * @author grupo01
- * @param Clase usuario que tiene como par·metros los campos que tiene la tabla
+ * @param Clase usuario que tiene como par√°metros los campos que tiene la tabla
  *              usuarios de la BD
  *
  */
-public class Usuario {
+public class Usuario implements Serializable{
 	private String username, mail;
-	private int password;
 
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(String username, String mail, int password) {
+	public Usuario(String username, String mail) {
 		super();
 		this.username = username;
 		this.mail = mail;
-		this.password = password;
 	}
 
 	public String getUsername() {
@@ -38,17 +37,9 @@ public class Usuario {
 		this.mail = mail;
 	}
 
-	public int getPassword() {
-		return password;
-	}
-
-	public void setPassword(int password) {
-		this.password = password;
-	}
-
 	@Override
 	public String toString() {
-		return "Usuario [username=" + username + ", mail=" + mail + ", password=" + password + "]";
+		return "Usuario [username=" + username + ", mail=" + mail + "]";
 	}
 
 }

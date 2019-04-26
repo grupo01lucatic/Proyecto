@@ -9,11 +9,11 @@ import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
 /**
- * Menú de la aplicación
+ * MenÃº de la aplicaciÃ³n
  */
 public class Menu {
 	/**
-	 * Método que inicia el menú llamando a imprimirMenu
+	 * MÃ©todo que inicia el menÃº llamando a imprimirMenu
 	 */
 	public static void iniciarMenu() {
 		boolean continuar = true;
@@ -22,11 +22,11 @@ public class Menu {
 			continuar = seleccionarOpcion();
 
 		} while (continuar);
-		System.out.println(" --- Sesión cerrada --- ");
+		System.out.println(" --- SesiÃ³n cerrada --- ");
 	}
 
 	/**
-	 * Método que pide un entero para poder seleccionar una opción del menú
+	 * MÃ©todo que pide un entero para poder seleccionar una opciÃ³n del menÃº
 	 * 
 	 * @return boolean
 	 */
@@ -34,10 +34,9 @@ public class Menu {
 	public static boolean seleccionarOpcion() {
 		boolean continuar = true;
 		try {
-
-			switch (PedirDatos.pedirDatoEntero("Introduce opción")) {
+			switch (PedirDatos.pedirDatoEntero("Introduce opciÃ³n")) {
 			case -1:
-				System.out.println("Introduce opción valida");
+				System.out.println("Introduce opciÃ³n valida");
 				break;
 			case 1:
 				new GestionPeliculas().modificarPeliculas();
@@ -49,7 +48,7 @@ public class Menu {
 				new GestionUsuarios().modificarUsuario();
 				break;
 			case 4:
-				new GestionUsuarios().altaUsuario();
+				new GestionUsuarios().altaUsuarios();
 				break;
 			case 5:
 				new GestionListadoUsuarios().mostrarListaUsuarios();
@@ -59,6 +58,9 @@ public class Menu {
 				break;
 			case 7:
 				new GestionListadoUsuarios().listarPeliculasVer();
+				break;
+			case 8:
+				new GestionListadoUsuarios().guardarListaUsuarios();
 				break;
 			case 9:
 				new GestionListadoPeliculas().listarPeliculasCategorias();
