@@ -109,4 +109,45 @@ public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 		}
 	}
 
+	/**
+	 * Este metodo muestra las 15 peliculas mejor valoradas
+	 */
+
+	@Override
+	public void listarPeliculasMejorValoradas() {
+		try {
+			String query = "select p.titulo, p.anio, c.nombre_categoria, p.valoracion from peliculas p left join categorias c on p.id_categoria order by p.Valoracion desc limit 15;";
+			con = conexion.conectar();
+			logger.info("Conexion creada");
+			pst = con.prepareStatement(query);
+			rs = pst.executeQuery();
+			System.out.println("--Las 15 peliculas mejor valoradas--");
+			while (rs.next()) {
+				System.out.print(rs.getString(1));
+				System.out.print(": ");
+				System.out.print(rs.getInt(2));
+				System.out.print(": ");
+				System.out.println(rs.getString(3));
+
+			}
+
+		} catch (SQLException e) {
+			logger.error("Ha ocurrido un error");
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pst != null) {
+					pst.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception e) {
+				logger.error("Algo ha salido mal");
+			}
+		}
+	}
+
 }
