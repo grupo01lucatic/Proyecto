@@ -9,13 +9,12 @@ import java.sql.Statement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import JUnit.Test;
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
 
 public class GestionUsuarios implements IGestionUsuarios {
-	private static Logger logger = LogManager.getLogger(Test.class);
+	private static Logger logger = LogManager.getLogger(GestionUsuarios.class);
 	static ConectorDB conexion = new ConectorDB();
 	static Connection con = null;
 	PreparedStatement pst = null;
@@ -43,7 +42,7 @@ public class GestionUsuarios implements IGestionUsuarios {
 			} else {
 				System.out.println("No se ha podido aÃ±adir el nuevo Usuario");
 				logger.info("No se ha añadido ningun usuario nuevo");
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,6 +53,7 @@ public class GestionUsuarios implements IGestionUsuarios {
 		}
 
 	}
+
 	/** Metodo para eliminar usuario introduciendo la id del usuario */
 	public void eliminarUsuario() {
 		try {
@@ -111,5 +111,5 @@ public class GestionUsuarios implements IGestionUsuarios {
 
 		}
 	}
-	
+
 }

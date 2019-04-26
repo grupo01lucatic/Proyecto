@@ -13,13 +13,12 @@ import java.sql.Statement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import JUnit.Test;
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
 
 public class GestionPeliculas implements IGestionPeliculas {
-	private static Logger logger = LogManager.getLogger(Test.class);
+	private static Logger logger = LogManager.getLogger(GestionPeliculas.class);
 	static ConectorDB conexion = new ConectorDB();
 	static Connection con = null;
 	PreparedStatement pst = null;
