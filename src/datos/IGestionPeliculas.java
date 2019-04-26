@@ -6,6 +6,6 @@ public interface IGestionPeliculas {
 
 	public void modificarPeliculas() throws MovieflixException;
 
-	public void eliminarPeliculas();
+	public void eliminarPelicula() throws MovieflixException;
 
 }
