@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import JUnit.Test;
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
@@ -20,14 +19,14 @@ public class GestionUsuarios implements IGestionUsuarios {
 	 * 
 	 * @param stmt prepara los datos que se van a insertar a la base de datos
 	 */
-	private static Logger logger = LogManager.getLogger(Test.class);
+	private static Logger logger = LogManager.getLogger(GestionUsuarios.class);
 	static ConectorDB conexion = new ConectorDB();
 	static Connection con = null;
 	PreparedStatement stmt = null;
 
 	@Override
-	/* Método para dar de alta usuarios */
-	public void altaUsuarios() {
+	/* MÃ©todo para dar de alta usuarios */
+	public void altaUsuario() {
 		try {
 			String query = "INSERT INTO usuarios (username, email, password) values (?,?,?)";
 			con = conexion.conectar();
@@ -42,10 +41,10 @@ public class GestionUsuarios implements IGestionUsuarios {
 
 			int insertada = stmt.executeUpdate();
 			if (insertada > 0) {
-				System.out.println("Se ha añadido el registro correctamente");
+				System.out.println("Se ha aÃ±adido el registro correctamente");
 			} else {
-				System.out.println("No se ha podido añadir el nuevo Usuario");
-				logger.info("No se ha a�adido ningun usuario nuevo");
+				System.out.println("No se ha podido aÃ±adir el nuevo Usuario");
+				logger.info("No se ha añadido ningun usuario nuevo");
 
 			}
 		} catch (SQLException e) {
@@ -58,7 +57,7 @@ public class GestionUsuarios implements IGestionUsuarios {
 
 	}
 
-	/* Método para eliminar usuario introduciendo la id del usuario */
+	/** Metodo para eliminar usuario introduciendo la id del usuario */
 	public void eliminarUsuario() {
 		try {
 
@@ -98,7 +97,7 @@ public class GestionUsuarios implements IGestionUsuarios {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			try {
 				preparedStmt.setString(4, PedirDatos.pedirDato("Introduce la id del usuario que deseas actualizar"));
-				preparedStmt.setString(3, PedirDatos.pedirDato("Introduce la contraseña"));
+				preparedStmt.setString(3, PedirDatos.pedirDato("Introduce la contraseÃ±a"));
 				preparedStmt.setString(2, PedirDatos.pedirDato("Introduce el email"));
 				preparedStmt.setString(1, PedirDatos.pedirDato("Introduce el nombre de usuario nuevo"));
 				preparedStmt.execute();

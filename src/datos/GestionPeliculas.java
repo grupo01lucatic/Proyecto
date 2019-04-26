@@ -29,7 +29,7 @@ public class GestionPeliculas implements IGestionPeliculas {
 	static Connection con = null;
 	PreparedStatement stmt = null;
 
-	/** Este método se encarga de modificar las películas. */
+	/** Este mÃ©todo se encarga de modificar las pelÃ­culas. */
 	@Override
 	public void modificarPeliculas() throws MovieflixException {
 		try {
@@ -38,7 +38,7 @@ public class GestionPeliculas implements IGestionPeliculas {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			stmt.setInt(4, PedirDatos.pedirDatoEntero("Introduce la id de la pelicula que deseas actualizar"));
 			stmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce la categoria de la pelicula"));
-			stmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el año de la pelicula"));
+			stmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el aÃ±o de la pelicula"));
 			stmt.setString(1, PedirDatos.pedirDato("Introduce el titulo de la pelicula"));
 			stmt.execute();
 			System.out.println("Los datos se han actualizado correctamente");
