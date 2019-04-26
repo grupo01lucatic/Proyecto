@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import datos.GestionPeliculas;
+import datos.GestionUsuarios;
 import excepciones.MovieflixException;
 import gui.ImprimirMenu;
 import utilidades.PedirDatos;
@@ -31,6 +32,9 @@ public class Menu {
 			break;
 		case 2:
 			new GestionPeliculas().eliminarPelicula();
+			break;
+		case 3:
+			new GestionUsuarios().modificarUsuario();
 			break;
 		case 0:
 			continuar = false;
