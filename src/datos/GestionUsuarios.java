@@ -2,9 +2,7 @@ package datos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import excepciones.MovieflixException;
@@ -12,35 +10,43 @@ import servicios.ConectorDB;
 import utilidades.PedirDatos;
 
 public class GestionUsuarios implements IGestionUsuarios {
+	/*
+	 * @param logger necesario para utilzar los logs
+	 * 
+	 * @param conexion Realiza la conexion a la base de datos
+	 * 
+	 * @param con realiza la conexion a la direccion indicada en URL
+	 * 
+	 * @param stmt prepara los datos que se van a insertar a la base de datos
+	 */
 	private static Logger logger = LogManager.getLogger(GestionUsuarios.class);
 	static ConectorDB conexion = new ConectorDB();
 	static Connection con = null;
-	PreparedStatement pst = null;
-	Statement stm = null;
-	ResultSet rs = null;
+	PreparedStatement stmt = null;
 
 	@Override
-	/** Método para dar de alta usuarios */
+
+	/** Metodo para dar de alta usuarios */
+
 	public void altaUsuario() {
 		try {
 			String query = "INSERT INTO usuarios (username, email, password) values (?,?,?)";
 			con = conexion.conectar();
-			PreparedStatement preparedStmt = con.prepareStatement(query);
+			stmt = con.prepareStatement(query);
 			try {
-				preparedStmt.setString(1, PedirDatos.pedirDato("Introduce un nombre de usuario"));
-				preparedStmt.setString(2, PedirDatos.pedirDato("Introduce un email"));
-				preparedStmt.setString(3, PedirDatos.pedirDato("Intruce el password"));
+				stmt.setString(1, PedirDatos.pedirDato("Introduce un nombre de usuario"));
+				stmt.setString(2, PedirDatos.pedirDato("Introduce un email"));
+				stmt.setString(3, PedirDatos.pedirDato("Intruce el password"));
 			} catch (MovieflixException e) {
 				e.printStackTrace();
 			}
 
-			int insertada = preparedStmt.executeUpdate();
+			int insertada = stmt.executeUpdate();
 			if (insertada > 0) {
-				System.out.println("Se ha añadido el registro correctamente");
+				System.out.println("Se ha aÃƒÂ±adido el registro correctamente");
 			} else {
-				System.out.println("No se ha podido añadir el nuevo usuario");
-				logger.info("No se ha añadido ningun usuario nuevo");
-
+				System.out.println("No se ha podido aÃ±adir el nuevo Usuario");
+				logger.info("No se ha aÃ±adido ningun usuario nuevo");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,7 +56,7 @@ public class GestionUsuarios implements IGestionUsuarios {
 		}
 	}
 
-	/** Método para eliminar usuario introduciendo la id del usuario */
+	/** Mï¿½todo para eliminar usuario introduciendo la id del usuario */
 	public void eliminarUsuario() {
 		try {
 
@@ -81,7 +87,9 @@ public class GestionUsuarios implements IGestionUsuarios {
 		}
 	}
 
-	/** Este método se encarga de modificar el usuario */
+
+	/** Este metodo se encarga de modificar el usuario */
+
 	@Override
 	public void modificarUsuario() {
 		try {
@@ -90,7 +98,8 @@ public class GestionUsuarios implements IGestionUsuarios {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			try {
 				preparedStmt.setString(4, PedirDatos.pedirDato("Introduce la id del usuario que deseas actualizar"));
-				preparedStmt.setString(3, PedirDatos.pedirDato("Introduce la contraseña"));
+
+				preparedStmt.setString(3, PedirDatos.pedirDato("Introduce la contraseÃƒÂ±a"));
 				preparedStmt.setString(2, PedirDatos.pedirDato("Introduce el email"));
 				preparedStmt.setString(1, PedirDatos.pedirDato("Introduce el nombre de usuario nuevo"));
 				preparedStmt.execute();

@@ -2,7 +2,7 @@ package datos;
 
 /**
  * @author grupo01
- * Interface de gestión de películas
+ * Interface de gestiï¿½n de pelï¿½culas
  */
 import excepciones.MovieflixException;
 
@@ -10,6 +10,8 @@ public interface IGestionPeliculas {
 
 	public void modificarPeliculas() throws MovieflixException;
 
+
 	public void eliminarPelicula();
+
 
 }
