@@ -1,17 +1,14 @@
 package JUnit;
 
-import static org.junit.Assert.*;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
-import excepciones.MovieflixException;
-import utilidades.PedirDatos;
+import datos.GestionListadoUsuarios;
 
-public class Test {
+public class TestGestionListadoUsuarios {
 
 	private static byte cont = 1;
 	private static Logger logger;
@@ -19,7 +16,7 @@ public class Test {
 	/* Inicialización */
 	static {
 		try {
-			logger = LogManager.getLogger(Test.class);
+			logger = LogManager.getLogger(TestPedirDatos.class);
 		} catch (Throwable e) {
 			System.out.println("No funciona");
 		}
@@ -46,9 +43,15 @@ public class Test {
 	// --------
 
 	@org.junit.Test
-	public void sumaPositivoNegativo() throws MovieflixException {
-		logger.info("Comprobando si es nulo.");
-		assertTrue(PedirDatos.pedirDatoEntero("Prueba") == -1);
-	}
+	public void comprobarEjecucion() {
+		logger.info("Comprobando si puede ejecutarse.");
+		try {
+			new GestionListadoUsuarios().mostrarListaUsuarios();
+			logger.info("Metodo ejecutado correctamente");
+		} catch (Exception e) {
+			logger.error("Error de ejecucion");
+			e.printStackTrace();
+		}
 
+	}
 }
