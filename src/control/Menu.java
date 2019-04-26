@@ -39,7 +39,7 @@ public class Menu {
 			new GestionUsuarios().modificarUsuario();
       break;
 		case 4:
-			new GestionUsuarios().AltaUsuarios();
+			new GestionUsuarios().altaUsuario();
 			break;
 		case 5:
 			new GestionListadoUsuarios().mostrarListaUsuarios();
