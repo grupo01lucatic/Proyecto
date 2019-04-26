@@ -1,6 +1,5 @@
 package datos;
 
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +17,7 @@ import utilidades.EscritorFichero;
 
 /**
  * 
- * @author grupo01 Clase encargada de la gestión de listados de usuarios
+ * Clase encargada de la gestion de listados de usuarios
  */
 
 public class GestionListadoUsuarios implements IGestionListadoUsuarios {
@@ -72,7 +71,7 @@ public class GestionListadoUsuarios implements IGestionListadoUsuarios {
 	}
 
 	/**
-	 * Este método muestra las películas que puede ver el usuario
+	 * Este metodo muestra las peliculas que puede ver el usuario
 	 */
 	@Override
 	public void listarPeliculasVer() {

@@ -9,11 +9,11 @@ import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
 /**
- * Menú de la aplicación
+ * Menu de la aplicacion
  */
 public class Menu {
 	/**
-	 * Método que inicia el menú llamando a imprimirMenu
+	 * Metodo que inicia el menu llamando a imprimirMenu
 	 */
 	public static void iniciarMenu() {
 		boolean continuar = true;
@@ -22,11 +22,11 @@ public class Menu {
 			continuar = seleccionarOpcion();
 
 		} while (continuar);
-		System.out.println(" --- Sesión cerrada --- ");
+		System.out.println(" --- Sesion cerrada --- ");
 	}
 
 	/**
-	 * Método que pide un entero para poder seleccionar una opción del menú
+	 * Metodo que pide un entero para poder seleccionar una opcion del menu
 	 * 
 	 * @return boolean
 	 */
@@ -34,9 +34,9 @@ public class Menu {
 	public static boolean seleccionarOpcion() {
 		boolean continuar = true;
 		try {
-			switch (PedirDatos.pedirDatoEntero("Introduce opción")) {
+			switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {
 			case -1:
-				System.out.println("Introduce opción valida");
+				System.out.println("Introduce opcion valida");
 				break;
 			case 1:
 				new GestionPeliculas().modificarPeliculas();
@@ -54,24 +54,27 @@ public class Menu {
 				new GestionUsuarios().altaUsuarios();
 				break;
 			case 6:
-				new GestionListadoUsuarios().mostrarListaUsuarios();
+				new GestionUsuarios().eliminarUsuario();
 				break;
 			case 7:
-				new GestionListadoPeliculas().listarPeliculas();
+				new GestionListadoUsuarios().mostrarListaUsuarios();
 				break;
 			case 8:
-				new GestionListadoUsuarios().listarPeliculasVer();
+				new GestionListadoPeliculas().listarPeliculas();
 				break;
 			case 9:
-				new GestionListadoUsuarios().guardarListaUsuarios();
+				new GestionListadoUsuarios().listarPeliculasVer();
 				break;
 			case 10:
-				new GestionListadoPeliculas().listarPeliculasCategorias();
+				new GestionListadoUsuarios().guardarListaUsuarios();
 				break;
 			case 11:
-				new GestionListadoPeliculas().listarPeliculasMasVistas();
+				new GestionListadoPeliculas().listarPeliculasCategorias();
 				break;
 			case 12:
+				new GestionListadoPeliculas().listarPeliculasMasVistas();
+				break;
+			case 13:
 				new GestionListadoPeliculas().listarPeliculasMejorValoradas();
 				break;
 			case 0:

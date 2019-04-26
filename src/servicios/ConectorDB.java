@@ -5,11 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;;
 
+/**
+ * Clase que conecta con la base de datos.
+ */
 public class ConectorDB {
-	/**
-	 * @author grupo01
-	 * @param Conecta con la base de datos.
-	 */
+
 	private static final String CONTROLADOR = "com.mysql.cj.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://10.90.36.104:3306/movieflix";
 	private static final String USUARIO = "grupo02";
@@ -45,7 +45,7 @@ public class ConectorDB {
 	}
 
 	/**
-	 * método que cierra la base de datos cada vez que se realiza una consulta a la
+	 * Método que cierra la base de datos cada vez que se realiza una consulta a la
 	 * base de datos
 	 */
 	public static void desconexion() {
