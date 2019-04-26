@@ -19,7 +19,7 @@ public class Menu {
 			continuar = seleccionarOpcion();
 
 		} while (continuar);
-		System.out.println(" --- Sesión cerrada --- ");
+		System.out.println(" --- Sesion cerrada --- ");
 	}
 
 	public static boolean seleccionarOpcion() throws MovieflixException {
@@ -27,7 +27,7 @@ public class Menu {
 
 		switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {
 		case -1:
-			System.out.println("Introduce opción valida");
+			System.out.println("Introduce opcion valida");
 			break;
 		case 1:
 			new GestionPeliculas().modificarPeliculas();
@@ -37,9 +37,9 @@ public class Menu {
 			break;
 		case 3:
 			new GestionUsuarios().modificarUsuario();
-      break;
+			break;
 		case 4:
-			new GestionUsuarios().AltaUsuarios();
+			new GestionUsuarios().altaUsuarios();
 			break;
 		case 5:
 			new GestionListadoUsuarios().mostrarListaUsuarios();
