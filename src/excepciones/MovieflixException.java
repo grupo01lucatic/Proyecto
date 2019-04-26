@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * 
- * Contiene metodos que tratan la excepcion NumberFormat usando loggers tanto de
+ * Contiene métodos que tratan la excepción NumberFormat usando loggers tanto de
  * info cuando todo va bien como de error si falla
  *
  */
@@ -33,10 +33,10 @@ public class MovieflixException extends Exception {
 		int num = -1;
 		try {
 			num = Integer.parseInt(br);
-			logger.info("Se ha guardado bien el numero");
+			logger.info("Se ha guardado bien el número");
 			return num;
 		} catch (NumberFormatException e) {
-			logger.error("Valor incorrecto. No se ha guardado numero");
+			logger.error("Valor incorrecto. No se ha guardado número");
 			return num;
 		}
 	}

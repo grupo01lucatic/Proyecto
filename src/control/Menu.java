@@ -1,8 +1,5 @@
 package control;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 import datos.GestionListadoPeliculas;
 import datos.GestionListadoUsuarios;
 import datos.GestionPeliculas;
@@ -12,11 +9,11 @@ import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
 /**
- * Menu de la aplicacion
+ * Menú de la aplicación
  */
 public class Menu {
 	/**
-	 * 
+	 * Método que inicia el menú llamando a imprimirMenu
 	 */
 	public static void iniciarMenu() {
 		boolean continuar = true;
@@ -25,19 +22,21 @@ public class Menu {
 			continuar = seleccionarOpcion();
 
 		} while (continuar);
-		System.out.println(" --- Sesion cerrada --- ");
+		System.out.println(" --- Sesión cerrada --- ");
 	}
 
 	/**
-	 * @return
+	 * Método que pide un entero para poder seleccionar una opción del menú
+	 * 
+	 * @return boolean
 	 */
+
 	public static boolean seleccionarOpcion() {
 		boolean continuar = true;
 		try {
-
-			switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {
+			switch (PedirDatos.pedirDatoEntero("Introduce opción")) {
 			case -1:
-				System.out.println("Introduce opcion valida");
+				System.out.println("Introduce opción valida");
 				break;
 			case 1:
 				new GestionPeliculas().modificarPeliculas();

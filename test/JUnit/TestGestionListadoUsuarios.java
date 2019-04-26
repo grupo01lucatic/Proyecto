@@ -13,12 +13,14 @@ public class TestGestionListadoUsuarios {
 	private static byte cont = 1;
 	private static Logger logger;
 
-	/* Inicialización */
+	/**
+	 * Inicialización
+	 */
 	static {
 		try {
 			logger = LogManager.getLogger(TestPedirDatos.class);
 		} catch (Throwable e) {
-			System.out.println("No funciona");
+			logger.error("No funciona");
 		}
 	}
 
