@@ -35,7 +35,6 @@ public class GestionPeliculas implements IGestionPeliculas {
 		try {
 			String query = " UPDATE peliculas SET titulo = ?, anio = ?, id_categoria = ? WHERE id_pelicula = ?";
 			con = conexion.conectar();
-			PreparedStatement preparedStmt = con.prepareStatement(query);
 			stmt.setInt(4, PedirDatos.pedirDatoEntero("Introduce la id de la pelicula que deseas actualizar"));
 			stmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce la categoria de la pelicula"));
 			stmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el aÃ±o de la pelicula"));
@@ -44,14 +43,14 @@ public class GestionPeliculas implements IGestionPeliculas {
 			System.out.println("Los datos se han actualizado correctamente");
 		} catch (SQLException e) {
 			e.printStackTrace();
-
 		} finally {
 			ConectorDB.desconexion();
-
 		}
 	}
 
-	/** metodo que lee el fichero linea a linea y lo inserta en la base de datos */
+
+	/** Metodo que lee el fichero linea a linea y lo inserta en la base de datos */
+
 	public void insertarPeliculas() throws IOException {
 		con = conexion.conectar();
 
@@ -79,13 +78,9 @@ public class GestionPeliculas implements IGestionPeliculas {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
 				System.out.println(id_pelicula + "\t" + titulo + "\t" + anio + "\t" + id_categoria);
-
 			}
-
 			br.close();
-
 		} finally {
 			ConectorDB.desconexion();
 		}
@@ -97,10 +92,8 @@ public class GestionPeliculas implements IGestionPeliculas {
 	 * de la base de datos esa id
 	 */
 
-	@SuppressWarnings("unused")
-	public void eliminarPelicula() throws MovieflixException {
+	public void eliminarPelicula() {
 		try {
-
 			con = conexion.conectar();
 			String query = " DELETE FROM peliculas WHERE id_pelicula = ?";
 			stmt = con.prepareStatement(query);
@@ -111,16 +104,14 @@ public class GestionPeliculas implements IGestionPeliculas {
 				System.out.println("Los campos se han eliminado correctamente");
 			} else {
 				System.out.println("No se han encontrado coincidencias");
-				logger.info("No coincide ninguna pelicula");
+				logger.info("No coincide ninguna pelï¿½cula");
 			}
-
-		} catch (SQLException e) {
+		} catch (SQLException | MovieflixException e) {
 			e.printStackTrace();
 
 		} finally {
 			ConectorDB.desconexion();
 		}
-
 	}
 	/** Metodo para incluir una nueva pelicula en el catalogo*/
 	public void peliculaNueva() {
@@ -130,7 +121,7 @@ public class GestionPeliculas implements IGestionPeliculas {
 			stmt = con.prepareStatement(query);
 			try {
 				stmt.setString(1, PedirDatos.pedirDato("Introduce el titulo de la pelicula nueva"));
-				stmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el año"));
+				stmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el aï¿½o"));
 				stmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce el numero de la categoria.\n 1.policiaca 2.romantica 3.aventuras 4.comedia 5.animacion 6.thriller"));
 			} catch (MovieflixException e) {
 				e.printStackTrace();
@@ -140,8 +131,8 @@ public class GestionPeliculas implements IGestionPeliculas {
 			if (insertada > 0) {
 				System.out.println("Pelicula nueva insertada");
 			} else {
-				System.out.println("No se ha podido añadir la pelicula al catalogo");
-				logger.info("No se ha podido añadir la pelicula");
+				System.out.println("No se ha podido aï¿½adir la pelicula al catalogo");
+				logger.info("No se ha podido aï¿½adir la pelicula");
 
 			}
 		} catch (SQLException e) {
@@ -153,5 +144,4 @@ public class GestionPeliculas implements IGestionPeliculas {
 		}
 
 	}
-
 }
