@@ -6,25 +6,28 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import JUnit.Test;
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
 
 public class GestionPeliculas implements IGestionPeliculas {
-	private static Logger logger = LogManager.getLogger(Test.class);
+
+	/*
+	 * @param logger necesario para utilzar los logs
+	 * 
+	 * @param conexion Realiza la conexion a la base de datos
+	 * 
+	 * @param con realiza la conexion a la direccion indicada en URL
+	 * 
+	 * @param stmt prepara los datos que se van a insertar a la base de datos
+	 */
+	private static Logger logger = LogManager.getLogger(GestionPeliculas.class);
 	static ConectorDB conexion = new ConectorDB();
 	static Connection con = null;
-	PreparedStatement pst = null;
-	Statement stm = null;
-	ResultSet rs = null;
+	PreparedStatement stmt = null;
 
 	/** Este método se encarga de modificar las películas. */
 	@Override
@@ -33,11 +36,11 @@ public class GestionPeliculas implements IGestionPeliculas {
 			String query = " UPDATE peliculas SET titulo = ?, anio = ?, id_categoria = ? WHERE id_pelicula = ?";
 			con = conexion.conectar();
 			PreparedStatement preparedStmt = con.prepareStatement(query);
-			preparedStmt.setInt(4, PedirDatos.pedirDatoEntero("Introduce la id de la pelicula que deseas actualizar"));
-			preparedStmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce la categoria de la pelicula"));
-			preparedStmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el año de la pelicula"));
-			preparedStmt.setString(1, PedirDatos.pedirDato("Introduce el titulo de la pelicula"));
-			preparedStmt.execute();
+			stmt.setInt(4, PedirDatos.pedirDatoEntero("Introduce la id de la pelicula que deseas actualizar"));
+			stmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce la categoria de la pelicula"));
+			stmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el año de la pelicula"));
+			stmt.setString(1, PedirDatos.pedirDato("Introduce el titulo de la pelicula"));
+			stmt.execute();
 			System.out.println("Los datos se han actualizado correctamente");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,12 +51,13 @@ public class GestionPeliculas implements IGestionPeliculas {
 		}
 	}
 
-	/** metodo que  lee el fichero linea a linea y lo inserta en la base de datos */
+	/** metodo que lee el fichero linea a linea y lo inserta en la base de datos */
 	public void insertarPeliculas() throws IOException {
 		con = conexion.conectar();
 
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("peliculas_numCat.txt"), "UTF8"));
+			BufferedReader br = new BufferedReader(
+					new InputStreamReader(new FileInputStream("peliculas_numCat.txt"), "UTF8"));
 
 			int c = 1;
 			String line = null;
@@ -65,12 +69,12 @@ public class GestionPeliculas implements IGestionPeliculas {
 				int id_pelicula = c++;
 				String query = "INSERT INTO peliculas (id_pelicula,titulo,anio,id_categoria) values (?,?,?,?)";
 				try {
-					pst = con.prepareStatement(query);
-					pst.setInt(1, id_pelicula);
-					pst.setString(2, titulo);
-					pst.setInt(3, Integer.parseInt(anio));
-					pst.setInt(4, Integer.parseInt(id_categoria));
-					pst.execute();
+					stmt = con.prepareStatement(query);
+					stmt.setInt(1, id_pelicula);
+					stmt.setString(2, titulo);
+					stmt.setInt(3, Integer.parseInt(anio));
+					stmt.setInt(4, Integer.parseInt(id_categoria));
+					stmt.execute();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -89,8 +93,8 @@ public class GestionPeliculas implements IGestionPeliculas {
 	}
 
 	/**
-	 * lee los id que introduce el usuario de las peliculas y a continuacion borra de
-	 * la base de datos esa id
+	 * lee los id que introduce el usuario de las peliculas y a continuacion borra
+	 * de la base de datos esa id
 	 */
 
 	@SuppressWarnings("unused")
@@ -99,10 +103,10 @@ public class GestionPeliculas implements IGestionPeliculas {
 
 			con = conexion.conectar();
 			String query = " DELETE FROM peliculas WHERE id_pelicula = ?";
-			PreparedStatement preparedStmt = con.prepareStatement(query);
+			stmt = con.prepareStatement(query);
 			int id_pelicula = PedirDatos.pedirDatoEntero("Introduce el id de la pelicula que quieres eliminar");
-			preparedStmt.setInt(1, id_pelicula);
-			int filasBorradas = preparedStmt.executeUpdate();
+			stmt.setInt(1, id_pelicula);
+			int filasBorradas = stmt.executeUpdate();
 			if (filasBorradas > 0) {
 				System.out.println("Los campos se han eliminado correctamente");
 			} else {
@@ -116,15 +120,7 @@ public class GestionPeliculas implements IGestionPeliculas {
 		} finally {
 			ConectorDB.desconexion();
 		}
-		
-	}
 
-	@Override
-	public void eliminarPeliculas() {
-		
 	}
-
-	
-	
 
 }

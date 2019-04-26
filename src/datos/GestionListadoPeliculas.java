@@ -9,12 +9,11 @@ import java.sql.Statement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import excepciones.MovieflixException;
 import servicios.ConectorDB;
 
 public class GestionListadoPeliculas implements IGestionListadoPeliculas {
-	private static Logger logger = (Logger) LogManager.getLogger(MovieflixException.class);
-
+	
+	private static Logger logger = (Logger) LogManager.getLogger(GestionListadoPeliculas.class);
 	static ConectorDB conexion = new ConectorDB();
 	static Connection con = null;
 	PreparedStatement pst = null;
@@ -24,7 +23,42 @@ public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 	/** Metodo para mostrar la lista de las peliculas */
 	@Override
 	public void listarPeliculas() {
+		try {
+			con = conexion.conectar();
+			stm = con.createStatement();
+			rs = stm.executeQuery("SELECT * FROM peliculas");
+			System.out.println("Titulo - Año - Categoria" + "\n");
+			while (rs.next()) {
+				String titulo = rs.getString(2);
+				int year = rs.getInt(3);
+				int cat = rs.getInt(4);
+				String nomCat = "";
+				if(cat == 1 ) {
+					nomCat = "Policiaca";
+				}
+				else if(cat == 2) {
+					nomCat = "Romantica";
+				}
+				else if(cat == 3) {
+					nomCat = "Aventuras";
+				}
+				else if(cat == 4) {
+					nomCat = "Comedia";
+				}
+				else if(cat == 5) {
+					nomCat = "Animacion";
+				}
+				else if(cat == 6) {
+					nomCat = "Thriller";
+				}
+				System.out.println(titulo + " - " + year + " , " + nomCat );
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 
+		} finally {
+			ConectorDB.desconexion();
+		}
 	}
 
 	/**
@@ -50,19 +84,7 @@ public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 		} catch (SQLException e) {
 			logger.error("Ha ocurrido un error");
 		} finally {
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (pst != null) {
-					pst.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (Exception e) {
-				logger.error("Algo ha salido mal");
-			}
+			ConectorDB.desconexion();
 		}
 	}
 
