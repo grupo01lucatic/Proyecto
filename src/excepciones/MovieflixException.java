@@ -1,59 +1,49 @@
 package excepciones;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+/**
+ * 
+ * Contiene metodos que tratan la excepcion NumberFormat usando loggers tanto de
+ * info cuando todo va bien como de error si falla
+ *
+ */
 
 public class MovieflixException extends Exception {
 	private static final long serialVersionUID = 1L;
-	private Level level;
-	
+	private static Logger logger = (Logger) LogManager.getLogger(MovieflixException.class);
+
 	public MovieflixException() {
 	}
-	
+
 	public MovieflixException(Throwable cause) {
 		super(cause);
 	}
+
 	public MovieflixException(String mensaje) {
 		super(mensaje);
 	}
+
 	public MovieflixException(String mensaje, Throwable cause) {
 		super(mensaje, cause);
 	}
-	public MovieflixException(String mensaje, int tipo) {
-		super(mensaje);
-		setLevel(tipo);
-	}
+
 	public static int manejoErrorNumberFormat(String br) {
-		int num=-1;
+		int num = -1;
 		try {
 			num = Integer.parseInt(br);
+			logger.info("Se ha guardado bien el numero");
 			return num;
 		} catch (NumberFormatException e) {
-			System.out.println("Error: entrada invalida");
+			logger.error("Valor incorrecto. No se ha guardado numero");
 			return num;
 		}
 	}
 
-	public void setLevel(int tipo) {
-		switch(tipo) {
-		case 1: 
-			level = Level.SEVERE;
-			break;
-		case 2:
-			level = Level.WARNING;
-			break;
-		case 3:
-			level = Level.INFO;
-			break;
-		default:
-			level= Level.INFO;
-			break;
-		}
-	}
 	@Override
 	public String toString() {
-		Logger.getLogger(MovieflixException.class.getName()).log(level, null, super.getMessage());
-		return super.getMessage();
+		return "Imprimiendo error";
 	}
+
 }
