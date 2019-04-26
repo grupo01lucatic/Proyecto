@@ -11,6 +11,7 @@ public class ConectorDB {
 	private static final String URL = "jdbc:mysql://10.90.36.104:3306/movieflix";
 	private static final String USUARIO = "grupo02";
 	private static final String CLAVE = "grupo";
+	static Connection conexion = null;
 
 	static {
 		try {
@@ -38,6 +39,18 @@ public class ConectorDB {
 
 	public PreparedStatement prepareStatement(String query) {
 		return null;
+	}
+	
+	/** metodo que cierra la base de datos cada vez que se realiza una consulta a la base de datos*/
+	public static void desconexion() {
+		try {
+
+			if (conexion != null) {
+				conexion.close();
+			}
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
 	}
 
 }
