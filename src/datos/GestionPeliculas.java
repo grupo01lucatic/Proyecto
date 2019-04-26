@@ -21,36 +21,36 @@ public class GestionPeliculas implements IGestionPeliculas {
 	Statement stm = null;
 	ResultSet rs = null;
 
-	/* Este método se encarga de modificar las películas. */
+	/** Este método se encarga de modificar las películas. */
 	@Override
 	public void modificarPeliculas() throws MovieflixException {
 		try {
-	    	 String query = " UPDATE peliculas SET titulo = ?, anio = ?, id_categoria = ? WHERE id_pelicula = ?";
-	    	 con = conexion.conectar();
-	    	 PreparedStatement preparedStmt = con.prepareStatement(query);
-	    	 preparedStmt.setInt (4, PedirDatos.pedirDatoEntero("Introduce la id de la pelicula que deseas actualizar"));
-	         preparedStmt.setInt (3, PedirDatos.pedirDatoEntero("Introduce la categoria de la pelicula"));
-	         preparedStmt.setInt (2, PedirDatos.pedirDatoEntero("Introduce el año de la pelicula"));
-	         preparedStmt.setString (1, PedirDatos.pedirDato("Introduce el titulo de la pelicula"));
-	         preparedStmt.execute();
-	         System.out.println("Los datos se han actualizado correctamente");
-	     } catch (SQLException e) {
-				e.printStackTrace();
+			String query = " UPDATE peliculas SET titulo = ?, anio = ?, id_categoria = ? WHERE id_pelicula = ?";
+			con = conexion.conectar();
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.setInt(4, PedirDatos.pedirDatoEntero("Introduce la id de la pelicula que deseas actualizar"));
+			preparedStmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce la categoria de la pelicula"));
+			preparedStmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el año de la pelicula"));
+			preparedStmt.setString(1, PedirDatos.pedirDato("Introduce el titulo de la pelicula"));
+			preparedStmt.execute();
+			System.out.println("Los datos se han actualizado correctamente");
+		} catch (SQLException e) {
+			e.printStackTrace();
 
-			} finally {
-				try {
+		} finally {
+			try {
 
-					if (con != null) {
-						con.close();
-					}
+				if (con != null) {
+					con.close();
 				}
-				catch (Exception e2){
-						e2.printStackTrace();
-					}
-
+			} catch (Exception e2) {
+				e2.printStackTrace();
 			}
-} 
 
+		}
+	}
+
+	/** metodo que el fichero linea a linea y lo inserta en la base de datos */
 	public void insertarPeliculas() throws IOException {
 		con = conexion.conectar();
 
@@ -97,9 +97,13 @@ public class GestionPeliculas implements IGestionPeliculas {
 
 	}
 
-	
+	/**
+	 * lee los id que introduce el usuario de las peliculas y acontinuacion borra de
+	 * la base de datos esa id
+	 */
+
 	@SuppressWarnings("unused")
-	public void eliminarPelicula() throws SQLException, MovieflixException {
+	public void eliminarPelicula() throws MovieflixException {
 		try {
 
 			con = conexion.conectar();
@@ -109,13 +113,11 @@ public class GestionPeliculas implements IGestionPeliculas {
 			preparedStmt.setInt(1, id_pelicula);
 			int filasBorradas = preparedStmt.executeUpdate();
 			if (filasBorradas > 0) {
-			    System.out.println("Los campos se han eliminado correctamente");
-			}
-			else {
+				System.out.println("Los campos se han eliminado correctamente");
+			} else {
 				System.out.println("No se han encontrado coincidencias");
 			}
-			
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 
@@ -133,9 +135,7 @@ public class GestionPeliculas implements IGestionPeliculas {
 
 	@Override
 	public void eliminarPeliculas() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 }

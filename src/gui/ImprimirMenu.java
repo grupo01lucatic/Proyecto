@@ -1,6 +1,7 @@
 package gui;
 
 public class ImprimirMenu {
+	/* Menú para mostrar al usuario */
 	public static void imprimirMenu() {
 		System.out.println("  ");
 		System.out.println(" --MovieFlix-- ");
@@ -8,8 +9,11 @@ public class ImprimirMenu {
 		System.out.println(" ****************************** ");
 		System.out.println("  ");
 		System.out.println("**Por favor, escoje una opción**");
+		System.out.println("*0.  Salir del menú   *");
 		System.out.println("*1.  Modificar película  *");
-		System.out.println("  ");
+		System.out.println("*2.  Eliminar película   *");
+		System.out.println("*3.  Dar de alta un usuario   *");
+		System.out.println("*4.  Mostrar listado de usuarios   *");
 		System.out.println(" ****************************** ");
 	}
 }

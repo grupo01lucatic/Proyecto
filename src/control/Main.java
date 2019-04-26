@@ -6,8 +6,8 @@ import datos.GestionUsuarios;
 import excepciones.MovieflixException;
 
 public class Main {
-	public static void main(String[] args) throws MovieflixException, SQLException {
-		
+	public static void main(String[] args) throws MovieflixException {
+		Menu.iniciarMenu();
 	}
 
 }

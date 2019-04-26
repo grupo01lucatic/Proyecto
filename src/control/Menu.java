@@ -1,31 +1,45 @@
 package control;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import datos.GestionListadoUsuarios;
+import datos.GestionPeliculas;
+import datos.GestionUsuarios;
 import excepciones.MovieflixException;
 import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
+/*Menú de la aplicación*/
 public class Menu {
-	public static void iniciarMenu() throws MovieflixException, IOException {
+	public static void iniciarMenu() throws MovieflixException {
 		boolean continuar = true;
 		do {
 			ImprimirMenu.imprimirMenu();
 			continuar = seleccionarOpcion();
 
 		} while (continuar);
-		System.out.println(" --- Sesi�n cerrada --- ");
+		System.out.println(" --- Sesión cerrada --- ");
 	}
 
-	public static boolean seleccionarOpcion() throws MovieflixException, IOException {
+	public static boolean seleccionarOpcion() throws MovieflixException {
 		boolean continuar = true;
 
 		switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {
 		case -1:
-			System.out.println("Introduce opci�n valida");
+			System.out.println("Introduce opción valida");
 			break;
 		case 1:
-			System.out.println("Modificar datos de una pelicula");
+			new GestionPeliculas().modificarPeliculas();
+			break;
+		case 2:
+			new GestionPeliculas().eliminarPelicula();
+			break;
+		case 3:
+			new GestionUsuarios().AltaUsuarios();
+			break;
+		case 4:
+			new GestionListadoUsuarios().mostrarListaUsuarios();
 			break;
 		case 0:
 			continuar = false;
