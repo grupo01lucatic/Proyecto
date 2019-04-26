@@ -1,15 +1,15 @@
 package excepciones;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * Contiene una exception que se lanza si el nombre del usuario es invalido.
  */
 
 public class ExcepcionNombreInvalido extends Exception {
+	/**
+	 * Controla que el nombre sea válido
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
-	private static Logger logger = (Logger) LogManager.getLogger(MovieflixException.class);
 
 	public ExcepcionNombreInvalido() {
 	}

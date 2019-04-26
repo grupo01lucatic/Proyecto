@@ -25,7 +25,9 @@ public class GestionUsuarios implements IGestionUsuarios {
 	PreparedStatement stmt = null;
 
 	@Override
-	/* MÃ©todo para dar de alta usuarios */
+
+	/** Metodo para dar de alta usuarios */
+
 	public void altaUsuario() {
 		try {
 			String query = "INSERT INTO usuarios (username, email, password) values (?,?,?)";
@@ -43,21 +45,18 @@ public class GestionUsuarios implements IGestionUsuarios {
 			if (insertada > 0) {
 				System.out.println("Se ha aÃ±adido el registro correctamente");
 			} else {
-				System.out.println("No se ha podido aÃ±adir el nuevo Usuario");
+				System.out.println("No se ha podido añadir el nuevo Usuario");
 				logger.info("No se ha añadido ningun usuario nuevo");
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
 			ConectorDB.desconexion();
-
 		}
-
 	}
 
-	/** Metodo para eliminar usuario introduciendo la id del usuario */
+	/** M�todo para eliminar usuario introduciendo la id del usuario */
 	public void eliminarUsuario() {
 		try {
 
@@ -88,7 +87,9 @@ public class GestionUsuarios implements IGestionUsuarios {
 		}
 	}
 
+
 	/** Este metodo se encarga de modificar el usuario */
+
 	@Override
 	public void modificarUsuario() {
 		try {
@@ -97,6 +98,7 @@ public class GestionUsuarios implements IGestionUsuarios {
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			try {
 				preparedStmt.setString(4, PedirDatos.pedirDato("Introduce la id del usuario que deseas actualizar"));
+
 				preparedStmt.setString(3, PedirDatos.pedirDato("Introduce la contraseÃ±a"));
 				preparedStmt.setString(2, PedirDatos.pedirDato("Introduce el email"));
 				preparedStmt.setString(1, PedirDatos.pedirDato("Introduce el nombre de usuario nuevo"));
@@ -105,14 +107,11 @@ public class GestionUsuarios implements IGestionUsuarios {
 			} catch (MovieflixException e) {
 				e.printStackTrace();
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
 			ConectorDB.desconexion();
-
 		}
 	}
-
 }

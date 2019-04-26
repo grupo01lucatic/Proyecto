@@ -1,14 +1,15 @@
 package excepciones;
 
 /**
- * Esta exception controla que el mail del usuario sea valido
+ * Esta excepción controla que el mail del usuario sea válido
  */
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class ExcepcionMailInvalido extends Exception {
+	/**
+	 * Excepción que controla que el main sea válido
+	 */
+	private static final long serialVersionUID = 1L;
 	private String mail;
-	private static Logger logger = (Logger) LogManager.getLogger(MovieflixException.class);
 
 	public ExcepcionMailInvalido() {
 	}

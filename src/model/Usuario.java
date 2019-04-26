@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * 
+ * @author grupo01
+ * @param Clase usuario que tiene como parámetros los campos que tiene la tabla
+ *              usuarios de la BD
+ *
+ */
 public class Usuario {
 	private String username, mail;
 	private int password;

@@ -1,14 +1,9 @@
 package control;
 
-import java.sql.SQLException;
-
-import datos.GestionUsuarios;
-import excepciones.MovieflixException;
-
 public class Main {
 	/**
 	 * @param args
-	 * @throws MovieflixException
+	 * @autor grupo01
 	 */
 	public static void main(String[] args) {
 		Menu.iniciarMenu();

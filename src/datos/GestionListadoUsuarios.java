@@ -7,9 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
+
+/**
+ * 
+ * @author grupo01 Clase encargada de la gestión de listados de usuarios
+ */
 
 public class GestionListadoUsuarios implements IGestionListadoUsuarios {
 
@@ -23,13 +27,15 @@ public class GestionListadoUsuarios implements IGestionListadoUsuarios {
 
 	@Override
 
-	/** MÃ©todo para mostrar la lista de usuarios */
+	/**
+	 * Método para mostrar la lista de usuarios
+	 */
 	public void mostrarListaUsuarios() {
 		// TODO Auto-generated method stub
 		try {
 			String query = "select id_user, username, email from usuarios;";
 			con = conexion.conectar();
-			logger.info("Conexion creada");
+			logger.info("Conexión creada");
 			pst = con.prepareStatement(query);
 			rs = pst.executeQuery();
 			while (rs.next()) {
@@ -55,13 +61,13 @@ public class GestionListadoUsuarios implements IGestionListadoUsuarios {
 					con.close();
 				}
 			} catch (Exception e) {
-				logger.error("Algo a salido mal");
+				logger.error("Algo ha salido mal");
 			}
 		}
 	}
 
 	/**
-	 * Este metodo muestra las peliculas que puede ver el usuario
+	 * Este método muestra las películas que puede ver el usuario
 	 */
 	@Override
 	public void listarPeliculasVer() {
@@ -69,7 +75,7 @@ public class GestionListadoUsuarios implements IGestionListadoUsuarios {
 		try {
 			String query = "select p.titulo, p.anio, c.nombre_categoria from peliculas p left join categorias c on p.id_categoria = c.id_categoria order by nombre_categoria;  ";
 			con = conexion.conectar();
-			logger.info("Conexion creada");
+			logger.info("Conexión creada");
 			pst = con.prepareStatement(query);
 			rs = pst.executeQuery();
 			while (rs.next()) {
@@ -95,11 +101,8 @@ public class GestionListadoUsuarios implements IGestionListadoUsuarios {
 					con.close();
 				}
 			} catch (Exception e) {
-				logger.error("Algo a salido mal");
+				logger.error("Algo ha salido mal");
 			}
 		}
-		
 	}
-
-
 }

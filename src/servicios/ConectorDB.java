@@ -6,7 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;;
 
 public class ConectorDB {
-	/* Conecta con la base de datos. */
+	/**
+	 * @author grupo01
+	 * @param Conecta con la base de datos.
+	 */
 	private static final String CONTROLADOR = "com.mysql.cj.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://10.90.36.104:3306/movieflix";
 	private static final String USUARIO = "grupo02";
@@ -27,7 +30,7 @@ public class ConectorDB {
 
 		try {
 			conexion = DriverManager.getConnection(URL, USUARIO, CLAVE);
-			System.out.println("Conexion establecida con exito");
+			System.out.println("Conexión establecida con exito");
 
 		} catch (SQLException e) {
 			System.out.println("Error en la conexión");
@@ -40,8 +43,11 @@ public class ConectorDB {
 	public PreparedStatement prepareStatement(String query) {
 		return null;
 	}
-	
-	/** metodo que cierra la base de datos cada vez que se realiza una consulta a la base de datos*/
+
+	/**
+	 * método que cierra la base de datos cada vez que se realiza una consulta a la
+	 * base de datos
+	 */
 	public static void desconexion() {
 		try {
 
