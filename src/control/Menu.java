@@ -48,6 +48,9 @@ public class Menu {
 		case 6:
 			new GestionListadoPeliculas().listarPeliculas();
 			break;
+    case 7:
+		  new GestionListadoUsuarios().listarPeliculasVer();
+      break;
 		case 0:
 			continuar = false;
 			break;
