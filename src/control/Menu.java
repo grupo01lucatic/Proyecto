@@ -11,21 +11,30 @@ import excepciones.MovieflixException;
 import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
-/*Menú de la aplicación*/
+/**
+ * Menu de la aplicacion*/
 public class Menu {
-	public static void iniciarMenu() throws MovieflixException {
+	/**
+	 * 
+	 */
+	public static void iniciarMenu() {
 		boolean continuar = true;
 		do {
 			ImprimirMenu.imprimirMenu();
 			continuar = seleccionarOpcion();
-
+			
 		} while (continuar);
 		System.out.println(" --- Sesion cerrada --- ");
 	}
 
-	public static boolean seleccionarOpcion() throws MovieflixException {
+	/**
+	 * @return
+	 */
+	public static boolean seleccionarOpcion() {
 		boolean continuar = true;
-
+		try {
+			
+		
 		switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {
 		case -1:
 			System.out.println("Introduce opcion valida");
@@ -40,7 +49,7 @@ public class Menu {
 			new GestionUsuarios().modificarUsuario();
 			break;
 		case 4:
-			new GestionUsuarios().altaUsuarios();
+			new GestionUsuarios().altaUsuario();
 			break;
 		case 5:
 			new GestionListadoUsuarios().mostrarListaUsuarios();
@@ -63,6 +72,11 @@ public class Menu {
 		case 0:
 			continuar = false;
 			break;
+		}
+		return continuar;
+		}catch(MovieflixException e) {
+			System.out.print(e);
+			iniciarMenu();
 		}
 		return continuar;
 	}
