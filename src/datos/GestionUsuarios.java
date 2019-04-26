@@ -5,11 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import JUnit.Test;
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
 
 public class GestionUsuarios implements IGestionUsuarios {
+	private static Logger logger = LogManager.getLogger(Test.class);
 	static ConectorDB conexion = new ConectorDB();
 	static Connection con = null;
 	PreparedStatement pst = null;
@@ -36,19 +42,14 @@ public class GestionUsuarios implements IGestionUsuarios {
 				System.out.println("Se ha añadido el registro correctamente");
 			} else {
 				System.out.println("No se ha podido añadir el nuevo Usuario");
+				logger.info("No se ha a�adido ningun usuario nuevo");
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
-			try {
-
-				if (con != null) {
-					con.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			ConectorDB.desconexion();
 
 		}
 
@@ -73,19 +74,14 @@ public class GestionUsuarios implements IGestionUsuarios {
 				System.out.println("Los campos se han eliminado correctamente");
 			} else {
 				System.out.println("No se ha encontrado el usuario");
+				logger.info("No se ha eliminado porque no hay coincidencias");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
-			try {
-				if (con != null) {
-					con.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			ConectorDB.desconexion();
 		}
 	}
 
@@ -111,15 +107,9 @@ public class GestionUsuarios implements IGestionUsuarios {
 			e.printStackTrace();
 
 		} finally {
-			try {
-
-				if (con != null) {
-					con.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			ConectorDB.desconexion();
 
 		}
 	}
+	
 }

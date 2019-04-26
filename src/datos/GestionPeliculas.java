@@ -1,20 +1,25 @@
 package datos;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import JUnit.Test;
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
 
 public class GestionPeliculas implements IGestionPeliculas {
-
+	private static Logger logger = LogManager.getLogger(Test.class);
 	static ConectorDB conexion = new ConectorDB();
 	static Connection con = null;
 	PreparedStatement pst = null;
@@ -38,24 +43,17 @@ public class GestionPeliculas implements IGestionPeliculas {
 			e.printStackTrace();
 
 		} finally {
-			try {
-
-				if (con != null) {
-					con.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			ConectorDB.desconexion();
 
 		}
 	}
 
-	/** metodo que el fichero linea a linea y lo inserta en la base de datos */
+	/** metodo que  lee el fichero linea a linea y lo inserta en la base de datos */
 	public void insertarPeliculas() throws IOException {
 		con = conexion.conectar();
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("peliculas_numCat.txt"));
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("peliculas_numCat.txt"), "UTF8"));
 
 			int c = 1;
 			String line = null;
@@ -85,20 +83,13 @@ public class GestionPeliculas implements IGestionPeliculas {
 			br.close();
 
 		} finally {
-			try {
-
-				if (con != null) {
-					con.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			ConectorDB.desconexion();
 		}
 
 	}
 
 	/**
-	 * lee los id que introduce el usuario de las peliculas y acontinuacion borra de
+	 * lee los id que introduce el usuario de las peliculas y a continuacion borra de
 	 * la base de datos esa id
 	 */
 
@@ -116,26 +107,24 @@ public class GestionPeliculas implements IGestionPeliculas {
 				System.out.println("Los campos se han eliminado correctamente");
 			} else {
 				System.out.println("No se han encontrado coincidencias");
+				logger.info("No coincide ninguna pelicula");
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 
 		} finally {
-			try {
-
-				if (con != null) {
-					con.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			ConectorDB.desconexion();
 		}
+		
 	}
 
 	@Override
 	public void eliminarPeliculas() {
-
+		
 	}
+
+	
+	
 
 }
