@@ -14,7 +14,7 @@ public class ImprimirMenu {
 		System.out.println("*2.  Eliminar película   *");
 		System.out.println("*3.  Dar de alta un usuario *");
 		System.out.println("*4.  Mostrar listado de usuarios *");
-		System.out.println("*.  Mostrar listado de usuarios *");
+		System.out.println("*6.  Mostrar listado de peliculas *");
 		System.out.println(" ****************************** ");
 	}
 }
