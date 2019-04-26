@@ -57,6 +57,9 @@ public class Menu {
 		case 10:
 			new GestionListadoPeliculas().listarPeliculasMasVistas();
 			break;
+		case 11:
+			new GestionListadoPeliculas().listarPeliculasMejorValoradas();
+			break;
 		case 0:
 			continuar = false;
 			break;
