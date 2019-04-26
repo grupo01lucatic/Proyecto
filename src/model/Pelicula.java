@@ -1,5 +1,12 @@
 package model;
 
+/**
+ * 
+ * @author grupo01
+ * @param Clase Película que contiene los campos que aparecen en la BD de la
+ *              tabla películas
+ *
+ */
 public class Pelicula {
 
 	private String nombre;
@@ -51,7 +58,7 @@ public class Pelicula {
 
 	@Override
 	public String toString() {
-		return "Pelicula [id_pelicula=" + id_pelicula + ", nombre=" + nombre + ", anio=" + anio + ", id_categoria="
+		return "Película [id_pelicula=" + id_pelicula + ", nombre=" + nombre + ", año=" + anio + ", id_categoria="
 				+ id_categoria + "]";
 	}
 

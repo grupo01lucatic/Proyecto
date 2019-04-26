@@ -5,13 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
 
+/**
+ * Clase que se encarga de la gestión de los listados referentes a películas
+ * implementando el interface IGestionListadosPeliculas
+ */
 public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 	private static Logger logger = (Logger) LogManager.getLogger(MovieflixException.class);
 
@@ -21,21 +23,23 @@ public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 	Statement stm = null;
 	ResultSet rs = null;
 
-	/** Metodo para mostrar la lista de las peliculas */
+	/**
+	 * Método para mostrar la lista de las películas
+	 */
 	@Override
 	public void listarPeliculas() {
 
 	}
 
 	/**
-	 * Metodo que muestra las peliculas ordenadas por categoria
+	 * Método que muestra las películas ordenadas por categoría
 	 */
 	@Override
 	public void listarPeliculasCategorias() {
 		try {
 			String query = "select p.titulo, p.anio, c.nombre_categoria from peliculas p left join categorias c on p.id_categoria = c.id_categoria order by nombre_categoria;  ";
 			con = conexion.conectar();
-			logger.info("Conexion creada");
+			logger.info("Conexión creada");
 			pst = con.prepareStatement(query);
 			rs = pst.executeQuery();
 			while (rs.next()) {
@@ -67,7 +71,7 @@ public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 	}
 
 	/**
-	 * Este metodo muestra las 10 peliculas mas vistas
+	 * Método muestra las 10 películas más vistas
 	 */
 
 	@Override
@@ -75,10 +79,10 @@ public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 		try {
 			String query = "select p.titulo, p.anio, c.nombre_categoria, p.numeroVecesVista from peliculas p left join categorias c on p.id_categoria = c.id_categoria order by p.numeroVecesVista desc limit 10;";
 			con = conexion.conectar();
-			logger.info("Conexion creada");
+			logger.info("Conexión creada");
 			pst = con.prepareStatement(query);
 			rs = pst.executeQuery();
-			System.out.println("--Las 10 peliculas más vistas--");
+			System.out.println("--Las 10 películas más vistas--");
 			while (rs.next()) {
 				System.out.print(rs.getString(1));
 				System.out.print(": ");
@@ -110,7 +114,7 @@ public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 	}
 
 	/**
-	 * Este metodo muestra las 15 peliculas mejor valoradas
+	 * Método muestra las 15 películas mejor valoradas
 	 */
 
 	@Override
@@ -118,17 +122,16 @@ public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 		try {
 			String query = "select p.titulo, p.anio, c.nombre_categoria, p.valoracion from peliculas p left join categorias c on p.id_categoria order by p.Valoracion desc limit 15;";
 			con = conexion.conectar();
-			logger.info("Conexion creada");
+			logger.info("Conexión creada");
 			pst = con.prepareStatement(query);
 			rs = pst.executeQuery();
-			System.out.println("--Las 15 peliculas mejor valoradas--");
+			System.out.println("--Las 15 películas mejor valoradas--");
 			while (rs.next()) {
 				System.out.print(rs.getString(1));
 				System.out.print(": ");
 				System.out.print(rs.getInt(2));
 				System.out.print(": ");
 				System.out.println(rs.getString(3));
-
 			}
 
 		} catch (SQLException e) {

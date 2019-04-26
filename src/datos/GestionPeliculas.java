@@ -9,10 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import excepciones.MovieflixException;
 import servicios.ConectorDB;
 import utilidades.PedirDatos;
@@ -32,27 +30,26 @@ public class GestionPeliculas implements IGestionPeliculas {
 			String query = " UPDATE peliculas SET titulo = ?, anio = ?, id_categoria = ? WHERE id_pelicula = ?";
 			con = conexion.conectar();
 			PreparedStatement preparedStmt = con.prepareStatement(query);
-			preparedStmt.setInt(4, PedirDatos.pedirDatoEntero("Introduce la id de la pelicula que deseas actualizar"));
-			preparedStmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce la categoria de la pelicula"));
-			preparedStmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el año de la pelicula"));
-			preparedStmt.setString(1, PedirDatos.pedirDato("Introduce el titulo de la pelicula"));
+			preparedStmt.setInt(4, PedirDatos.pedirDatoEntero("Introduce la id de la película que deseas actualizar"));
+			preparedStmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce la categoría de la película"));
+			preparedStmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el año de la película"));
+			preparedStmt.setString(1, PedirDatos.pedirDato("Introduce el titulo de la película"));
 			preparedStmt.execute();
 			System.out.println("Los datos se han actualizado correctamente");
 		} catch (SQLException e) {
 			e.printStackTrace();
-
 		} finally {
 			ConectorDB.desconexion();
-
 		}
 	}
 
-	/** metodo que  lee el fichero linea a linea y lo inserta en la base de datos */
+	/** Método que lee el fichero línea a línea y lo inserta en la base de datos */
 	public void insertarPeliculas() throws IOException {
 		con = conexion.conectar();
 
 		try {
-			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("peliculas_numCat.txt"), "UTF8"));
+			BufferedReader br = new BufferedReader(
+					new InputStreamReader(new FileInputStream("peliculas_numCat.txt"), "UTF8"));
 
 			int c = 1;
 			String line = null;
@@ -74,13 +71,9 @@ public class GestionPeliculas implements IGestionPeliculas {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
 				System.out.println(id_pelicula + "\t" + titulo + "\t" + anio + "\t" + id_categoria);
-
 			}
-
 			br.close();
-
 		} finally {
 			ConectorDB.desconexion();
 		}
@@ -88,42 +81,30 @@ public class GestionPeliculas implements IGestionPeliculas {
 	}
 
 	/**
-	 * lee los id que introduce el usuario de las peliculas y a continuacion borra de
-	 * la base de datos esa id
+	 * Método que lee los id que introduce el usuario de las películas y a
+	 * continuación borra de la base de datos esa id
 	 */
 
-	@SuppressWarnings("unused")
-	public void eliminarPelicula() throws MovieflixException {
+	public void eliminarPelicula() {
 		try {
-
 			con = conexion.conectar();
 			String query = " DELETE FROM peliculas WHERE id_pelicula = ?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
-			int id_pelicula = PedirDatos.pedirDatoEntero("Introduce el id de la pelicula que quieres eliminar");
+			int id_pelicula = PedirDatos.pedirDatoEntero("Introduce el id de la película que quieres eliminar");
 			preparedStmt.setInt(1, id_pelicula);
 			int filasBorradas = preparedStmt.executeUpdate();
 			if (filasBorradas > 0) {
 				System.out.println("Los campos se han eliminado correctamente");
 			} else {
 				System.out.println("No se han encontrado coincidencias");
-				logger.info("No coincide ninguna pelicula");
+				logger.info("No coincide ninguna película");
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException | MovieflixException e) {
 			e.printStackTrace();
 
 		} finally {
 			ConectorDB.desconexion();
 		}
-		
 	}
-
-	@Override
-	public void eliminarPeliculas() {
-		
-	}
-
-	
-	
-
 }
