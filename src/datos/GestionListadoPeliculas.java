@@ -66,4 +66,47 @@ public class GestionListadoPeliculas implements IGestionListadoPeliculas {
 		}
 	}
 
+	/**
+	 * Este metodo muestra las 10 peliculas mas vistas
+	 */
+
+	@Override
+	public void listarPeliculasMasVistas() {
+		try {
+			String query = "select p.titulo, p.anio, c.nombre_categoria, p.numeroVecesVista from peliculas p left join categorias c on p.id_categoria = c.id_categoria order by p.numeroVecesVista desc limit 10;";
+			con = conexion.conectar();
+			logger.info("Conexion creada");
+			pst = con.prepareStatement(query);
+			rs = pst.executeQuery();
+			System.out.println("--Las 10 peliculas más vistas--");
+			while (rs.next()) {
+				System.out.print(rs.getString(1));
+				System.out.print(": ");
+				System.out.print(rs.getInt(2));
+				System.out.print(": ");
+				System.out.print(rs.getString(3));
+				System.out.print(": ");
+				System.out.print(rs.getString(4));
+				System.out.println("");
+			}
+
+		} catch (SQLException e) {
+			logger.error("Ha ocurrido un error");
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pst != null) {
+					pst.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (Exception e) {
+				logger.error("Algo ha salido mal");
+			}
+		}
+	}
+
 }
