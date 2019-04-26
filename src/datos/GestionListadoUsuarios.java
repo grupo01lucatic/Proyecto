@@ -23,7 +23,7 @@ public class GestionListadoUsuarios implements IGestionListadoUsuarios {
 
 	@Override
 
-	/** Método para mostrar la lista de usuarios */
+	/** MÃ©todo para mostrar la lista de usuarios */
 	public void mostrarListaUsuarios() {
 		// TODO Auto-generated method stub
 		try {
@@ -58,7 +58,6 @@ public class GestionListadoUsuarios implements IGestionListadoUsuarios {
 				logger.error("Algo a salido mal");
 			}
 		}
-
 	}
 
 }
