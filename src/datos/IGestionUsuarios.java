@@ -2,7 +2,7 @@ package datos;
 
 
 public interface IGestionUsuarios {
-	public void altaUsuarios();
+	public void altaUsuario();
 
 	public void modificarUsuario();
 }

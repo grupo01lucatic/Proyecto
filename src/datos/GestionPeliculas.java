@@ -122,5 +122,36 @@ public class GestionPeliculas implements IGestionPeliculas {
 		}
 
 	}
+	/** Metodo para incluir una nueva pelicula en el catalogo*/
+	public void peliculaNueva() {
+		try {
+			String query = "INSERT INTO peliculas (titulo, anio, id_categoria) values (?,?,?)";
+			con = conexion.conectar();
+			stmt = con.prepareStatement(query);
+			try {
+				stmt.setString(1, PedirDatos.pedirDato("Introduce el titulo de la pelicula nueva"));
+				stmt.setInt(2, PedirDatos.pedirDatoEntero("Introduce el año"));
+				stmt.setInt(3, PedirDatos.pedirDatoEntero("Introduce el numero de la categoria.\n 1.policiaca 2.romantica 3.aventuras 4.comedia 5.animacion 6.thriller"));
+			} catch (MovieflixException e) {
+				e.printStackTrace();
+			}
+
+			int insertada = stmt.executeUpdate();
+			if (insertada > 0) {
+				System.out.println("Pelicula nueva insertada");
+			} else {
+				System.out.println("No se ha podido añadir la pelicula al catalogo");
+				logger.info("No se ha podido añadir la pelicula");
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		} finally {
+			ConectorDB.desconexion();
+
+		}
+
+	}
 
 }
