@@ -3,13 +3,14 @@ package control;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import datos.GestionListadoUsuarios;
 import datos.GestionPeliculas;
 import datos.GestionUsuarios;
 import excepciones.MovieflixException;
 import gui.ImprimirMenu;
 import utilidades.PedirDatos;
 
-/*Menú de la aplicación*/
+/*MenÃº de la aplicaciÃ³n*/
 public class Menu {
 	public static void iniciarMenu() throws MovieflixException {
 		boolean continuar = true;
@@ -18,7 +19,7 @@ public class Menu {
 			continuar = seleccionarOpcion();
 
 		} while (continuar);
-		System.out.println(" --- Sesión cerrada --- ");
+		System.out.println(" --- SesiÃ³n cerrada --- ");
 	}
 
 	public static boolean seleccionarOpcion() throws MovieflixException {
@@ -26,7 +27,7 @@ public class Menu {
 
 		switch (PedirDatos.pedirDatoEntero("Introduce opcion")) {
 		case -1:
-			System.out.println("Introduce opción valida");
+			System.out.println("Introduce opciÃ³n valida");
 			break;
 		case 1:
 			new GestionPeliculas().modificarPeliculas();
@@ -37,7 +38,9 @@ public class Menu {
 		case 3:
 			new GestionUsuarios().AltaUsuarios();
 			break;
-	
+		case 4:
+			new GestionListadoUsuarios().mostrarListaUsuarios();
+			break;
 		case 0:
 			continuar = false;
 			break;
