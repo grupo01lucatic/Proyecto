@@ -45,30 +45,33 @@ public class Menu {
 				new GestionPeliculas().eliminarPelicula();
 				break;
 			case 3:
-				new GestionUsuarios().modificarUsuario();
+				new GestionPeliculas().peliculaNueva();
 				break;
 			case 4:
-				new GestionUsuarios().altaUsuarios();
+				new GestionUsuarios().modificarUsuario();
 				break;
 			case 5:
-				new GestionListadoUsuarios().mostrarListaUsuarios();
+				new GestionUsuarios().altaUsuarios();
 				break;
 			case 6:
-				new GestionListadoPeliculas().listarPeliculas();
+				new GestionListadoUsuarios().mostrarListaUsuarios();
 				break;
 			case 7:
-				new GestionListadoUsuarios().listarPeliculasVer();
+				new GestionListadoPeliculas().listarPeliculas();
 				break;
 			case 8:
-				new GestionListadoUsuarios().guardarListaUsuarios();
+				new GestionListadoUsuarios().listarPeliculasVer();
 				break;
 			case 9:
-				new GestionListadoPeliculas().listarPeliculasCategorias();
+				new GestionListadoUsuarios().guardarListaUsuarios();
 				break;
 			case 10:
-				new GestionListadoPeliculas().listarPeliculasMasVistas();
+				new GestionListadoPeliculas().listarPeliculasCategorias();
 				break;
 			case 11:
+				new GestionListadoPeliculas().listarPeliculasMasVistas();
+				break;
+			case 12:
 				new GestionListadoPeliculas().listarPeliculasMejorValoradas();
 				break;
 			case 0:
