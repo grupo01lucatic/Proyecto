@@ -1,15 +1,19 @@
 package model;
 
+/**
+ * Película que contiene los campos que aparecen en la BD de la tabla películas
+ *
+ */
 public class Pelicula {
 
-	private String id_pelicula, nombre;
-	private int anio, id_categoria;
+	private String nombre;
+	private int anio, id_categoria, id_pelicula;
 
 	public Pelicula() {
 		super();
 	}
 
-	public Pelicula(String id_pelicula, String nombre, int anio, int id_categoria) {
+	public Pelicula(int id_pelicula, String nombre, int anio, int id_categoria) {
 		super();
 		this.id_pelicula = id_pelicula;
 		this.nombre = nombre;
@@ -17,11 +21,11 @@ public class Pelicula {
 		this.id_categoria = id_categoria;
 	}
 
-	public String getId_pelicula() {
+	public int getId_pelicula() {
 		return id_pelicula;
 	}
 
-	public void setId_pelicula(String id_pelicula) {
+	public void setId_pelicula(int id_pelicula) {
 		this.id_pelicula = id_pelicula;
 	}
 
@@ -51,7 +55,7 @@ public class Pelicula {
 
 	@Override
 	public String toString() {
-		return "Pelicula [id_pelicula=" + id_pelicula + ", nombre=" + nombre + ", anio=" + anio + ", id_categoria="
+		return "Película [id_pelicula=" + id_pelicula + ", nombre=" + nombre + ", año=" + anio + ", id_categoria="
 				+ id_categoria + "]";
 	}
 

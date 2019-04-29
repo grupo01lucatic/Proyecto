@@ -1,13 +1,13 @@
 package control;
 
-import servicios.ConectorDB;
-
+/**
+ * Clase principal
+ */
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		// Inicia la conexión con la DB.
-		new ConectorDB().conectorDB();
+		Menu.iniciarMenu();
+
 	}
 
 }
